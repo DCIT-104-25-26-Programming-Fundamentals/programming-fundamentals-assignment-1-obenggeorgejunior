@@ -28,10 +28,32 @@
 # -----------------------------------------------------------------------------
 # - You MUST implement the logic inside a function (see scaffold below).
 # - Numbers less than 2 are NOT prime — handle this inside the function.
-# - The main block must call the function and print the result.
+# - The main block must call the function and print the result.2
 #
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+
+
+
+def is_prime_number(n):
+       #This my code should Return True if n is a prime number, or False if otherwise.
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+if __name__ == "__main__":
+    number = int(input("Enter a number: "))
+    if is_prime_number(number):
+        print(f"{number} is a prime number.")
+    else:
+        print(f"{number} is NOT a prime number.")
+
+
+
 

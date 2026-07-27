@@ -79,3 +79,82 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 7
+# Console-Based To-Do List Application
+# =============================================================================
+
+tasks = []  # Store all tasks in this list
+
+def display_menu():
+    #Print the main menu.
+    print("============================")
+    print("     TO-DO LIST MENU")
+    print("============================")
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Delete task")
+    print("4. Quit")
+    print("Enter your choice (1-4): ", end="")
+
+def add_task():
+    #Prompt for a task and add it to the list.
+    task = input("Enter task: ").strip()
+    if task:  # avoid adding empty tasks
+        tasks.append(task)
+        print(f'Task added: "{task}"')
+    else:
+        print("Task cannot be empty.")
+
+def view_tasks():
+    #Display all tasks numbered from 1, or a message if empty.
+    if not tasks:
+        print("Your task list is empty.")
+    else:
+        print("Your Tasks:")
+        for i, task in enumerate(tasks, start=1):
+            print(f"{i}. {task}")
+
+def delete_task():
+    #Show tasks, ask for a number, and remove that task if valid.
+    if not tasks:
+        print("No tasks to delete.")
+        return
+
+   
+    print("Your Tasks:")
+    for i, task in enumerate(tasks, start=1):
+        print(f"{i}. {task}")
+
+    try:
+        num = int(input("Enter task number to delete: "))
+        if 1 <= num <= len(tasks):
+            removed = tasks.pop(num - 1)
+            print(f'Task "{removed}" has been removed.')
+        else:
+            print("Invalid task number.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+def main():
+    #Main loop that keeps showing the menu until the user quits.
+    while True:
+        display_menu()
+        choice = input().strip()
+
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            view_tasks()
+        elif choice == "3":
+            delete_task()
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+        print()  # blank line for readability between actions
+
+if __name__ == "__main__":
+    main()
